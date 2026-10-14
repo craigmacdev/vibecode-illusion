@@ -24,6 +24,7 @@
     --f-multiuser: #2a78d6;
     --f-integrations: #1f9ab3;
     --f-adminops: #16a888;
+    --f-pwa: #18a070;
     --f-support: #1b8f4f;
 
     /* hardening layer — warm (yellows / oranges / reds), foundational→surface */
@@ -58,6 +59,7 @@
       --f-multiuser: #3987e5;
       --f-integrations: #35b0c9;
       --f-adminops: #2ac29e;
+      --f-pwa: #2cb781;
       --f-support: #2fac64;
 
       --h-scale: #e0645a;
@@ -91,6 +93,7 @@
     --f-multiuser: #3987e5;
     --f-integrations: #35b0c9;
     --f-adminops: #2ac29e;
+    --f-pwa: #2cb781;
     --f-support: #2fac64;
 
     --h-scale: #e0645a;
@@ -141,6 +144,8 @@
   .eyebrow { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--pen); font-weight: 600; margin: 0 0 10px; }
   h1 { font-size: clamp(28px, 5vw, 42px); line-height: 1.05; margin: 0 0 12px; font-weight: 700; text-wrap: balance; letter-spacing: -0.01em; }
   .dek { max-width: 64ch; color: var(--ink-2); font-size: 16px; line-height: 1.55; margin: 0; }
+
+  .dek-note { margin-top: 8px; font-size: 14px; color: var(--ink-muted); }
 
   .scenario-toggle { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
   .scenario-toggle .st-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
@@ -331,6 +336,7 @@
     </div>
     <h1>The Vibe-Code Illusion</h1>
     <p class="dek">A vibe-coded app is a real, working build — often good enough to demo or use by yourself, but likely incomplete.  Add commonly missing features below (blue/green) and hardening activities (orange/yellow). Toggle items in the checklist — the drawing rescales to match.</p>
+    <p class="dek dek-note">These are rough estimate guidelines, individual projects can vary.</p>
 
     <div class="scenario-toggle">
       <span class="st-label mono">Estimate basis</span>
@@ -369,10 +375,11 @@
         <div class="seg" id="seg-multiuser" hidden style="flex-grow:30; background:var(--f-multiuser)" tabindex="0" data-tip="Multi-user & collaboration — +30% (20–40)&#10;Accounts, tenancy, sharing, permission scaffolding"><span class="num"></span><span class="abbr">Mu</span></div>
         <div class="seg" id="seg-integrations" hidden style="flex-grow:15; background:var(--f-integrations)" tabindex="0" data-tip="Integrations — +15% (10–25)&#10;Payments, SSO, email/SMS, webhooks — with retries &amp; idempotency"><span class="num"></span><span class="abbr">In</span></div>
         <div class="seg" id="seg-adminops" hidden style="flex-grow:20; background:var(--f-adminops)" tabindex="0" data-tip="Operations & admin — +20% (15–25)&#10;Backup/restore, user/role mgmt, activity log, content curation"><span class="num"></span><span class="abbr">Ao</span></div>
+        <div class="seg" id="seg-pwa" hidden style="flex-grow:10; background:var(--f-pwa)" tabindex="0" data-tip="Progressive web / mobile — +10% (5–15)&#10;Installable app, offline mode, push notifications, mobile device quirks"><span class="num"></span><span class="abbr">Pw</span></div>
         <div class="seg" id="seg-support" hidden style="flex-grow:20; background:var(--f-support)" tabindex="0" data-tip="User support — +20% (15–25)&#10;Help docs, in-app guidance, feedback &amp; support requests"><span class="num"></span><span class="abbr">Su</span></div>
       </div>
 
-      <div class="hardening-frame">
+      <div class="hardening-frame" id="hardening-frame">
         <div class="hardening-bar" id="hardening-bar">
           <div class="h-seg" id="hseg-scale" hidden style="flex-grow:30; background:var(--h-scale)" tabindex="0" data-tip="Scale & robustness — +30% (20–40)&#10;Defined performance targets, no concurrency limits, real error handling"><span class="num"></span><span class="abbr">Sr</span></div>
           <div class="h-seg" id="hseg-security" hidden style="flex-grow:25; background:var(--h-security)" tabindex="0" data-tip="Security — +25% (15–35)&#10;Role-based access, no SQLi/XSS, no misconfigurations"><span class="num"></span><span class="abbr">Se</span></div>
@@ -410,6 +417,10 @@
         <div class="item-row">
           <input type="checkbox" id="chk-adminops" data-role="feature" data-seg="seg-adminops">
           <label for="chk-adminops"><span class="swatch" style="background:var(--f-adminops)"><span class="abbr">Ao</span></span><span class="head"><span class="name">Admin &amp; ops</span> <span class="pct" id="pctval-seg-adminops">+20%</span> <span class="range">(15–25)</span></span><span class="desc">Backup/restore, user/role mgmt, activity log, content curation.</span></label>
+        </div>
+        <div class="item-row">
+          <input type="checkbox" id="chk-pwa" data-role="feature" data-seg="seg-pwa">
+          <label for="chk-pwa"><span class="swatch" style="background:var(--f-pwa)"><span class="abbr">Pw</span></span><span class="head"><span class="name">Progressive web / mobile</span> <span class="pct" id="pctval-seg-pwa">+10%</span> <span class="range">(5–15)</span></span><span class="desc">Installable app, offline support, push notifications, and mobile device quirks.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-support" data-role="feature" data-seg="seg-support">
@@ -460,7 +471,7 @@
     <p class="notes-title mono">Notes</p>
     <ol>
       <li>Feature percentages are of the vibe-coded build's own effort (the 100% baseline) and stack left to right, in the order checked.</li>
-      <li>Each hardening bar is drawn to the same scale as the feature bar above it — its width (and so its area) shows that item's effort as a share of the checked feature total, not an extra stretch of the bar's length.</li>
+      <li>Hardening percentages apply to the full feature scope you have selected, not just the baseline, so the same hardening costs more on a bigger build. Each hardening bar is drawn to the same scale as the feature bar above it — so a 10% item is 10% as wide as the feature bar, and the hardening bar runs wider than it when the checked items add up to more than 100%.</li>
       <li>Ranges shift with the app's shape: an internal single-user tool sits at the low end of every item; a customer-facing product with real money or regulated data sits at the high end of most.</li>
       <li>This drawing is the buildout only. Once launched, operating, administering, and supporting the app costs a similar order of effort on an ongoing basis — that's a separate estimate, not included here.</li>
     </ol>
@@ -480,6 +491,7 @@
     { seg: 'seg-multiuser', low: 20, mid: 30, high: 40 },
     { seg: 'seg-integrations', low: 10, mid: 15, high: 25 },
     { seg: 'seg-adminops', low: 15, mid: 20, high: 25 },
+    { seg: 'seg-pwa', low: 5, mid: 10, high: 15 },
     { seg: 'seg-support', low: 15, mid: 20, high: 25 }
   ];
   var HARDENING = [
@@ -532,13 +544,19 @@
     document.getElementById('brace-text').innerHTML =
       '<b>' + (total / 100).toFixed(1) + 'x</b> the base effort with the checked features, before hardening.';
 
-    var hardeningSum = 0;
+    var hardeningPct = 0;
     HARDENING.forEach(function (h) {
       var chk = document.querySelector('[data-row="' + h.seg + '"]');
-      if (chk && chk.checked) hardeningSum += h.pct;
+      if (chk && chk.checked) hardeningPct += h.pct;
     });
-    document.getElementById('hardening-bar').style.width = (hardeningSum / total * 100) + '%';
-    var grandTotal = total + hardeningSum;
+    var hardeningUnits = total * hardeningPct / 100;
+    var featureWidth = total / Math.max(total, hardeningUnits) * 100;
+    ['bar-row', 'hardening-frame', 'dim-line'].forEach(function (id) {
+      document.getElementById(id).style.width = featureWidth + '%';
+    });
+    document.getElementById('hardening-bar').style.width = hardeningPct + '%';
+    lastFeatureTotal = total;
+    var grandTotal = total + hardeningUnits;
     document.getElementById('brace-text-2').innerHTML =
       '<b>' + (grandTotal / 100).toFixed(1) + 'x</b> the base effort once hardening is added.';
 
@@ -565,6 +583,7 @@
 
   var lastGrandTotal = 100;
   var lastAnyChecked = false;
+  var lastFeatureTotal = 100;
   var effortInput = document.getElementById('effort-input');
   var effortUnit = document.getElementById('effort-unit');
   var effortResult = document.getElementById('effort-result');
@@ -582,7 +601,8 @@
 
     FEATURES.concat(HARDENING).forEach(function (item) {
       var n = document.querySelector('#' + item.seg + ' .num');
-      if (n) n.textContent = valid ? round(baseline * item.pct / 100) : '';
+      var scope = item.seg.indexOf('hseg-') === 0 ? lastFeatureTotal / 100 : 1;
+      if (n) n.textContent = valid ? Math.round(baseline * item.pct / 100 * scope * 2) / 2 : '';
     });
 
     if (!lastAnyChecked) {
