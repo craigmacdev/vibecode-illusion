@@ -264,8 +264,8 @@
   }
   .effort-input { width: 88px; }
   .effort-input:focus, .effort-unit:focus { outline: 2px solid var(--pen-soft); outline-offset: 1px; }
-  .effort-result { font-size: 13px; color: var(--ink-2); }
-  .effort-result b { color: var(--pen); font-family: "IBM Plex Mono", monospace; font-size: 13.5px; }
+  .effort-result { font-size: 14px; color: var(--ink-2); }
+  .effort-result b { color: var(--pen); font-family: "IBM Plex Mono", monospace; font-size: 14px; }
   .effort-result .muted { color: var(--ink-muted); }
 
   /* ===== checklist legend ===== */
@@ -357,6 +357,10 @@
         <option>Weeks</option>
         <option>Tokens</option>
       </select>
+    </div>
+
+    <div class="effort-calc">
+      <span class="st-label mono">Complete Effort</span>
       <span class="effort-result" id="effort-result">Enter your baseline effort to see the additional effort implied above.</span>
     </div>
   </header>
@@ -617,8 +621,8 @@
     var additional = baseline * (lastGrandTotal - 100) / 100;
     var total = baseline * lastGrandTotal / 100;
     effortResult.innerHTML =
-      '<b>' + round(additional) + '</b> additional ' + unit +
-      ' <span class="muted">(' + round(total) + ' ' + unit + ' total, ' + (lastGrandTotal / 100).toFixed(1) + 'x of baseline)</span>';
+      '<b>' + round(total) + '</b> ' + unit + ' total' +
+      ' <span class="muted">(' + round(additional) + ' additional, ' + (lastGrandTotal / 100).toFixed(1) + 'x of baseline)</span>';
   }
 
   effortInput.addEventListener('input', updateEffort);
