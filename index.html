@@ -133,7 +133,7 @@
   .dek { max-width: 64ch; color: var(--ink-2); font-size: 16px; line-height: 1.55; margin: 0; }
 
   .scenario-toggle { display: flex; align-items: center; gap: 12px; margin-top: 18px; flex-wrap: wrap; }
-  .scenario-toggle .st-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+  .scenario-toggle .st-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
   .scenario-btns { display: inline-flex; border: 1px solid var(--hairline); border-radius: 4px; overflow: hidden; }
   .scenario-btn {
     font-family: "IBM Plex Mono", monospace;
@@ -150,7 +150,7 @@
   .scenario-btn:last-child { border-right: none; }
   .scenario-btn:hover { background: var(--row-hover); }
   .scenario-btn.active { background: var(--pen); color: var(--sheet-bg); font-weight: 600; }
-  .scenario-hint { font-size: 11.5px; color: var(--ink-muted); }
+  .scenario-hint { font-size: 13px; color: var(--ink-muted); }
 
   section.block { margin-bottom: 8px; }
   .block-label { display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px; }
@@ -218,7 +218,7 @@
   .dim-tick .stem { display: block; width: 1px; height: 11px; background: var(--hairline); margin: 1px auto 0; }
   .dim-tick.zero .val, .dim-tick.end .val { color: var(--pen); font-weight: 600; }
 
-  .brace-note { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; padding: 12px 16px; background: var(--baseline-fill); border-radius: 5px; font-size: 12.5px; color: var(--ink-2); line-height: 1.5; }
+  .brace-note { display: flex; align-items: center; gap: 12px; margin: 16px 0 0; padding: 12px 16px; background: var(--baseline-fill); border-radius: 5px; font-size: 13px; color: var(--ink-2); line-height: 1.5; }
   .brace-note + .brace-note { margin-top: 6px; margin-bottom: 28px; }
   .brace-note b { color: var(--ink); font-family: "IBM Plex Mono", monospace; }
   .brace-note.after { background: transparent; border: 1px dashed var(--hairline); }
@@ -233,7 +233,7 @@
   .checklist-group .brace-note { margin: 0 0 14px; min-height: 84px; }
 
   .effort-calc { display: flex; align-items: center; gap: 12px; margin-top: 14px; flex-wrap: wrap; }
-  .effort-calc .st-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
+  .effort-calc .st-label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); white-space: nowrap; }
   .effort-input, .effort-unit {
     font-family: "IBM Plex Mono", monospace;
     font-size: 12.5px;
@@ -245,19 +245,20 @@
   }
   .effort-input { width: 88px; }
   .effort-input:focus, .effort-unit:focus { outline: 2px solid var(--pen-soft); outline-offset: 1px; }
-  .effort-result { font-size: 12.5px; color: var(--ink-2); }
+  .effort-result { font-size: 13px; color: var(--ink-2); }
   .effort-result b { color: var(--pen); font-family: "IBM Plex Mono", monospace; font-size: 13.5px; }
   .effort-result .muted { color: var(--ink-muted); }
 
   /* ===== checklist legend ===== */
   .checklists { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 6px 0 10px; }
   .checklist-group h3 {
-    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 10px;
+    font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 10px;
     display: flex; align-items: center; gap: 7px;
     cursor: pointer; user-select: none; width: fit-content;
     padding: 3px 6px 3px 2px; border-radius: 4px; margin-left: -2px;
   }
   .checklist-group h3:hover { background: var(--row-hover); }
+  .checklist-group h3 .hint { font-size: 11px; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink-muted); }
   .checklist-group h3 .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
   .checklist-group.cool h3 { color: #1a5f8a; }
   .checklist-group.warm h3 { color: #a1521f; }
@@ -270,23 +271,24 @@
 
   .item-row { display: flex; align-items: flex-start; gap: 9px; padding: 6px 4px; border-radius: 4px; }
   .item-row:hover { background: var(--row-hover); }
-  .item-row input[type="checkbox"] { margin-top: 3px; width: 15px; height: 15px; accent-color: var(--pen); cursor: pointer; flex: none; }
+  .item-row input[type="checkbox"] { margin-top: 0; width: 15px; height: 15px; accent-color: var(--pen); cursor: pointer; flex: none; }
   .item-row input[type="checkbox"]:disabled { cursor: not-allowed; opacity: 0.55; }
-  .item-row label { cursor: pointer; font-size: 12.5px; line-height: 1.4; }
-  .item-row .swatch { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 26px; border-radius: 4px; margin-right: 8px; vertical-align: -8px; }
+  .item-row label { flex: 1; min-width: 0; display: grid; grid-template-columns: 34px 1fr; column-gap: 10px; row-gap: 1px; align-items: start; cursor: pointer; font-size: 13px; line-height: 1.4; }
+  .item-row .head { line-height: 1.3; }
+  .item-row .swatch { display: flex; align-items: center; justify-content: center; width: 34px; height: 24px; border-radius: 0; }
   .item-row .name { font-weight: 600; color: var(--ink); }
   .item-row .pct { color: var(--ink-2); font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   .item-row .range { color: var(--ink-muted); font-family: "IBM Plex Mono", monospace; font-size: 10.5px; }
-  .item-row .desc { display: block; color: var(--ink-muted); font-size: 11px; line-height: 1.4; margin-top: 2px; font-weight: 400; }
+  .item-row .desc { grid-column: 2; color: var(--ink-muted); font-size: 12px; line-height: 1.4; font-weight: 400; }
   .item-row.baseline label { cursor: default; }
 
   .notes { border-top: 1px solid var(--hairline-soft); padding: 20px 0 22px; font-size: 12px; color: var(--ink-2); line-height: 1.6; }
   .notes .notes-title { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; margin: 0 0 8px; }
   .notes ol { margin: 0; padding-left: 18px; }
-  .notes li { margin-bottom: 4px; }
+  .notes li { margin-bottom: 4px; font-size: 13px; }
 
   .titleblock { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--hairline); margin: 0 clamp(-18px, -5vw, -48px); }
-  .titleblock .cell { padding: 10px clamp(18px, 5vw, 48px); border-right: 1px solid var(--hairline-soft); }
+  .titleblock .cell { padding: 10px 24px; border-right: 1px solid var(--hairline-soft); }
   .titleblock .cell:last-child { border-right: none; }
   .titleblock .k { font-size: 9.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); margin: 0 0 2px; }
   .titleblock .v { font-family: "IBM Plex Mono", monospace; font-size: 12px; color: var(--ink); }
@@ -308,7 +310,7 @@
   <header class="head">
     <p class="eyebrow mono">Estimating Effort</p>
     <h1>The Vibe-Code Illusion</h1>
-    <p class="dek">A vibe-coded app is a real, working build — often good enough to demo or use by yourself, but likely incomplete.  Add commonly missing features below (blue/green) and hardening activity (orange/yellow). Toggle items in the checklist — the drawing rescales to match.</p>
+    <p class="dek">A vibe-coded app is a real, working build — often good enough to demo or use by yourself, but likely incomplete.  Add commonly missing features below (blue/green) and hardening activities (orange/yellow). Toggle items in the checklist — the drawing rescales to match.</p>
 
     <div class="scenario-toggle">
       <span class="st-label mono">Estimate basis</span>
@@ -322,7 +324,7 @@
 
     <div class="effort-calc">
       <span class="st-label mono">Baseline effort</span>
-      <input type="number" id="effort-input" class="effort-input" min="0" step="any" value="10" placeholder="e.g. 10">
+      <input type="number" id="effort-input" class="effort-input" min="0" step="any" value="10" placeholder="e.g. 10" autofocus>
       <select id="effort-unit" class="effort-unit" aria-label="Unit">
         <option>Hours</option>
         <option selected>Man-days</option>
@@ -334,7 +336,7 @@
   </header>
 
   <section class="block elevation">
-    <div class="block-label"><span class="mono">Elevation — layered build</span><span class="rule"></span></div>
+    <div class="block-label"><span class="mono">Build Elements</span><span class="rule"></span></div>
 
     <div class="dim-line" id="dim-line"><div class="track"></div></div>
 
@@ -369,73 +371,73 @@
       <div class="checklist-group cool">
       <div class="brace-note">
         <span class="brace-arrow"></span>
-        <span id="brace-text"><b>195%</b> of the baseline is checked below — before hardening, that's roughly 2× the original vibe-coded effort.</span>
+        <span id="brace-text"><b>1.0x</b> the base effort with the checked features, before hardening.</span>
       </div>
-        <h3 id="toggle-feature" tabindex="0" role="button" aria-label="Toggle all feature items" title="Click to toggle all feature items on/off"><span class="dot" style="background:var(--f-multiuser)"></span>Feature layer</h3>
+        <h3 id="toggle-feature" tabindex="0" role="button" aria-label="Toggle all feature items" title="Click to toggle all feature items on/off"><span class="dot" style="background:var(--f-multiuser)"></span>Feature layer <span class="hint">(click to toggle)</span></h3>
 
         <div class="item-row baseline">
           <input type="checkbox" id="chk-base" checked disabled>
-          <label for="chk-base"><span class="swatch" style="background:var(--baseline-fill)"></span><span class="name">Vibe&#8209;coded baseline</span> <span class="pct">100%</span><span class="desc">Happy&#8209;path functionality only.</span></label>
+          <label for="chk-base"><span class="swatch" style="background:var(--baseline-fill)"></span><span class="head"><span class="name">Vibe&#8209;coded baseline</span> <span class="pct">100%</span></span><span class="desc">Happy&#8209;path functionality only.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-multiuser" data-role="feature" data-seg="seg-multiuser">
-          <label for="chk-multiuser"><span class="swatch" style="background:var(--f-multiuser)"><span class="abbr">Mu</span></span><span class="name">Multi&#8209;user</span> <span class="pct" id="pctval-seg-multiuser">+30%</span> <span class="range">(20–40)</span><span class="desc">Accounts, tenancy, sharing, permission scaffolding.</span></label>
+          <label for="chk-multiuser"><span class="swatch" style="background:var(--f-multiuser)"><span class="abbr">Mu</span></span><span class="head"><span class="name">Multi&#8209;user</span> <span class="pct" id="pctval-seg-multiuser">+30%</span> <span class="range">(20–40)</span></span><span class="desc">Accounts, tenancy, sharing, permission scaffolding.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-integrations" data-role="feature" data-seg="seg-integrations">
-          <label for="chk-integrations"><span class="swatch" style="background:var(--f-integrations)"><span class="abbr">In</span></span><span class="name">Integrations</span> <span class="pct" id="pctval-seg-integrations">+15%</span> <span class="range">(10–25)</span><span class="desc">Payments, SSO, email/SMS, webhooks — with retries &amp; idempotency.</span></label>
+          <label for="chk-integrations"><span class="swatch" style="background:var(--f-integrations)"><span class="abbr">In</span></span><span class="head"><span class="name">Integrations</span> <span class="pct" id="pctval-seg-integrations">+15%</span> <span class="range">(10–25)</span></span><span class="desc">Payments, SSO, email/SMS, webhooks — with retries &amp; idempotency.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-adminops" data-role="feature" data-seg="seg-adminops">
-          <label for="chk-adminops"><span class="swatch" style="background:var(--f-adminops)"><span class="abbr">Ao</span></span><span class="name">Admin &amp; ops</span> <span class="pct" id="pctval-seg-adminops">+20%</span> <span class="range">(15–25)</span><span class="desc">Backup/restore, user/role mgmt, activity log, content curation.</span></label>
+          <label for="chk-adminops"><span class="swatch" style="background:var(--f-adminops)"><span class="abbr">Ao</span></span><span class="head"><span class="name">Admin &amp; ops</span> <span class="pct" id="pctval-seg-adminops">+20%</span> <span class="range">(15–25)</span></span><span class="desc">Backup/restore, user/role mgmt, activity log, content curation.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-support" data-role="feature" data-seg="seg-support">
-          <label for="chk-support"><span class="swatch" style="background:var(--f-support)"><span class="abbr">Su</span></span><span class="name">Support</span> <span class="pct" id="pctval-seg-support">+20%</span> <span class="range">(15–25)</span><span class="desc">Help docs, in&#8209;app guidance, feedback &amp; support requests.</span></label>
+          <label for="chk-support"><span class="swatch" style="background:var(--f-support)"><span class="abbr">Su</span></span><span class="head"><span class="name">Support</span> <span class="pct" id="pctval-seg-support">+20%</span> <span class="range">(15–25)</span></span><span class="desc">Help docs, in&#8209;app guidance, feedback &amp; support requests.</span></label>
         </div>
       </div>
 
       <div class="checklist-group warm">
       <div class="brace-note after">
         <span class="brace-arrow"></span>
-        <span id="brace-text-2"><b>320%</b> once hardening is added — roughly 3.2× the original vibe-coded effort, checked items only.</span>
+        <span id="brace-text-2"><b>1.0x</b> the base effort once hardening is added.</span>
       </div>
-        <h3 id="toggle-hardening" tabindex="0" role="button" aria-label="Toggle all hardening items" title="Click to toggle all hardening items on/off"><span class="dot" style="background:var(--h-security)"></span>Hardening layer</h3>
+        <h3 id="toggle-hardening" tabindex="0" role="button" aria-label="Toggle all hardening items" title="Click to toggle all hardening items on/off"><span class="dot" style="background:var(--h-security)"></span>Hardening layer <span class="hint">(click to toggle)</span></h3>
 
         <div class="item-row">
           <input type="checkbox" id="chk-scale" data-role="hardening" data-row="hseg-scale">
-          <label for="chk-scale"><span class="swatch" style="background:var(--h-scale)"><span class="abbr">Sr</span></span><span class="name">Scale &amp; robustness</span> <span class="pct" id="pctval-hseg-scale">+30%</span> <span class="range">(20–40)</span><span class="desc">Defined performance targets, no concurrency limits, real error handling.</span></label>
+          <label for="chk-scale"><span class="swatch" style="background:var(--h-scale)"><span class="abbr">Sr</span></span><span class="head"><span class="name">Scale &amp; robustness</span> <span class="pct" id="pctval-hseg-scale">+30%</span> <span class="range">(20–40)</span></span><span class="desc">Defined performance targets, no concurrency limits, real error handling.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-security" data-role="hardening" data-row="hseg-security">
-          <label for="chk-security"><span class="swatch" style="background:var(--h-security)"><span class="abbr">Se</span></span><span class="name">Security</span> <span class="pct" id="pctval-hseg-security">+25%</span> <span class="range">(15–35)</span><span class="desc">Role&#8209;based access, no SQLi/XSS, no misconfigurations.</span></label>
+          <label for="chk-security"><span class="swatch" style="background:var(--h-security)"><span class="abbr">Se</span></span><span class="head"><span class="name">Security</span> <span class="pct" id="pctval-hseg-security">+25%</span> <span class="range">(15–35)</span></span><span class="desc">Role&#8209;based access, no SQLi/XSS, no misconfigurations.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-dataintegrity" data-role="hardening" data-row="hseg-dataintegrity">
-          <label for="chk-dataintegrity"><span class="swatch" style="background:var(--h-dataintegrity)"><span class="abbr">Di</span></span><span class="name">Data integrity</span> <span class="pct" id="pctval-hseg-dataintegrity">+10%</span> <span class="range">(5–15)</span><span class="desc">Schema versioning, safe migrations, write&#8209;time validation.</span></label>
+          <label for="chk-dataintegrity"><span class="swatch" style="background:var(--h-dataintegrity)"><span class="abbr">Di</span></span><span class="head"><span class="name">Data integrity</span> <span class="pct" id="pctval-hseg-dataintegrity">+10%</span> <span class="range">(5–15)</span></span><span class="desc">Schema versioning, safe migrations, write&#8209;time validation.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-testing" data-role="hardening" data-row="hseg-testing">
-          <label for="chk-testing"><span class="swatch" style="background:var(--h-testing)"><span class="abbr">Tc</span></span><span class="name">Testing &amp; CI/CD</span> <span class="pct" id="pctval-hseg-testing">+15%</span> <span class="range">(10–20)</span><span class="desc">Automated tests, staging environments, deploy pipelines.</span></label>
+          <label for="chk-testing"><span class="swatch" style="background:var(--h-testing)"><span class="abbr">Tc</span></span><span class="head"><span class="name">Testing &amp; CI/CD</span> <span class="pct" id="pctval-hseg-testing">+15%</span> <span class="range">(10–20)</span></span><span class="desc">Automated tests, staging environments, deploy pipelines.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-observability" data-role="hardening" data-row="hseg-observability">
-          <label for="chk-observability"><span class="swatch" style="background:var(--h-observability)"><span class="abbr">Ob</span></span><span class="name">Observability</span> <span class="pct" id="pctval-hseg-observability">+10%</span> <span class="range">(5–15)</span><span class="desc">Monitoring, alerting, error tracking.</span></label>
+          <label for="chk-observability"><span class="swatch" style="background:var(--h-observability)"><span class="abbr">Ob</span></span><span class="head"><span class="name">Observability</span> <span class="pct" id="pctval-hseg-observability">+10%</span> <span class="range">(5–15)</span></span><span class="desc">Monitoring, alerting, error tracking.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-uxpolish" data-role="hardening" data-row="hseg-uxpolish">
-          <label for="chk-uxpolish"><span class="swatch" style="background:var(--h-uxpolish)"><span class="abbr">Ux</span></span><span class="name">UX polish</span> <span class="pct" id="pctval-hseg-uxpolish">+10%</span> <span class="range">(5–15)</span><span class="desc">Responsive/cross&#8209;browser QA, empty &amp; loading states, first run.</span></label>
+          <label for="chk-uxpolish"><span class="swatch" style="background:var(--h-uxpolish)"><span class="abbr">Ux</span></span><span class="head"><span class="name">UX polish</span> <span class="pct" id="pctval-hseg-uxpolish">+10%</span> <span class="range">(5–15)</span></span><span class="desc">Responsive/cross&#8209;browser QA, empty &amp; loading states, first run.</span></label>
         </div>
         <div class="item-row">
           <input type="checkbox" id="chk-compliance" data-role="hardening" data-row="hseg-compliance">
-          <label for="chk-compliance"><span class="swatch" style="background:var(--h-compliance)"><span class="abbr">Co</span></span><span class="name">Compliance</span> <span class="pct" id="pctval-hseg-compliance">+10%</span> <span class="range">(5–15)</span><span class="desc">Privacy policy, ToS, GDPR/CCPA, accessibility.</span></label>
+          <label for="chk-compliance"><span class="swatch" style="background:var(--h-compliance)"><span class="abbr">Co</span></span><span class="head"><span class="name">Compliance</span> <span class="pct" id="pctval-hseg-compliance">+10%</span> <span class="range">(5–15)</span></span><span class="desc">Privacy policy, ToS, GDPR/CCPA, accessibility.</span></label>
         </div>
       </div>
     </div>
   </section>
 
   <div class="notes">
-    <p class="notes-title mono">General notes</p>
+    <p class="notes-title mono">Notes</p>
     <ol>
       <li>Feature percentages are of the vibe-coded build's own effort (the 100% baseline) and stack left to right, in the order checked.</li>
       <li>Each hardening bar is drawn to the same scale as the feature bar above it — its width (and so its area) shows that item's effort as a share of the checked feature total, not an extra stretch of the bar's length.</li>
@@ -447,8 +449,8 @@
   <div class="titleblock">
     <div class="cell"><p class="k">Subject</p><p class="v">Vibe&#8209;coded web app</p></div>
     <div class="cell"><p class="k">Basis</p><p class="v">% of baseline effort</p></div>
-    <div class="cell"><p class="k">Rev</p><p class="v">B</p></div>
-    <div class="cell"><p class="k">Date</p><p class="v">2026&#8209;09&#8209;19</p></div>
+    <div class="cell"><p class="k">Rev</p><p class="v">C</p></div>
+    <div class="cell"><p class="k">Date</p><p class="v">2026-10-14</p></div>
   </div>
 </div>
 
@@ -494,7 +496,8 @@
       }
     });
     boundaries[boundaries.length - 1].edge = 'end';
-    boundaries[boundaries.length - 1].label += '%';
+    var last = boundaries[boundaries.length - 1];
+    if (last.label.slice(-1) !== '%') last.label += '%';
 
     var dimLine = document.getElementById('dim-line');
     dimLine.querySelectorAll('.dim-tick').forEach(function (t) { t.remove(); });
@@ -507,8 +510,7 @@
     });
 
     document.getElementById('brace-text').innerHTML =
-      '<b>' + total + '%</b> of the baseline is checked below — before hardening, that’s roughly ' +
-      (total / 100).toFixed(1) + '× the original vibe‑coded effort.';
+      '<b>' + (total / 100).toFixed(1) + 'x</b> the base effort with the checked features, before hardening.';
 
     var hardeningSum = 0;
     HARDENING.forEach(function (h) {
@@ -518,10 +520,10 @@
     document.getElementById('hardening-bar').style.width = (hardeningSum / total * 100) + '%';
     var grandTotal = total + hardeningSum;
     document.getElementById('brace-text-2').innerHTML =
-      '<b>' + grandTotal + '%</b> once hardening is added — roughly ' +
-      (grandTotal / 100).toFixed(1) + '× the original vibe‑coded effort, checked items only.';
+      '<b>' + (grandTotal / 100).toFixed(1) + 'x</b> the base effort once hardening is added.';
 
     lastGrandTotal = grandTotal;
+    lastAnyChecked = !!document.querySelector('[data-role]:checked');
     updateEffort();
     applyInk();
   }
@@ -542,6 +544,7 @@
   new MutationObserver(applyInk).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
   var lastGrandTotal = 100;
+  var lastAnyChecked = false;
   var effortInput = document.getElementById('effort-input');
   var effortUnit = document.getElementById('effort-unit');
   var effortResult = document.getElementById('effort-result');
@@ -555,12 +558,17 @@
     var share = Math.round(10000 / lastGrandTotal);
 
     baseLabel.innerHTML = (valid ? '<b>' + round(baseline) + ' ' + unit + '</b>' : '<b>Vibe\u2011coded baseline</b>') +
-      '<span>(' + share + '% of final effort)</span>';
+      '<span>(' + share + '% of final effort' + (lastAnyChecked ? '' : '?') + ')</span>';
 
     FEATURES.concat(HARDENING).forEach(function (item) {
       var n = document.querySelector('#' + item.seg + ' .num');
       if (n) n.textContent = valid ? round(baseline * item.pct / 100) : '';
     });
+
+    if (!lastAnyChecked) {
+      effortResult.innerHTML = 'No additions selected';
+      return;
+    }
 
     if (!valid) {
       effortResult.innerHTML = 'Enter your baseline effort to see the additional effort implied above.';
@@ -570,7 +578,7 @@
     var total = baseline * lastGrandTotal / 100;
     effortResult.innerHTML =
       '<b>' + round(additional) + '</b> additional ' + unit +
-      ' <span class="muted">(' + round(total) + ' ' + unit + ' total, at ' + lastGrandTotal + '%)</span>';
+      ' <span class="muted">(' + round(total) + ' ' + unit + ' total, ' + (lastGrandTotal / 100).toFixed(1) + 'x of baseline)</span>';
   }
 
   effortInput.addEventListener('input', updateEffort);
@@ -628,5 +636,6 @@
   });
 
   applyScenario('mid');
+  effortInput.focus();
 })();
 </script>
